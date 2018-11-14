@@ -188,6 +188,16 @@ public class ActivityTelegram extends EmojiCompatActivity implements TelegramPan
         this.echoMessage(message);
     }
 
+    @Override
+    public void onTypingChange() {
+
+    }
+
+    @Override
+    public void onTypingStop() {
+
+    }
+
     private void echoMessage(final Message income) {
         new AsyncTask<Void, Void, Message>() {
             @Override

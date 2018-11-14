@@ -10,5 +10,7 @@ public interface TelegramPanelEventListener {
     public void onMicClicked();
 
     public void onSendClicked();
+    public void onTypingChange();
+    public void onTypingStop();
 
 }

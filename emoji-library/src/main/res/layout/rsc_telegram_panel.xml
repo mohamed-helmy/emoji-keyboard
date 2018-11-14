@@ -9,11 +9,13 @@
 
     <include layout="@layout/rsc_util_remove_edittext_focus"/>
 
+
+
     <android.support.v7.widget.Toolbar
         android:id="@+id/panel"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/rsc_bottom_panel_bkg"
+        android:background="@drawable/shadow"
         android:elevation="0dp"
         android:minHeight="?attr/actionBarSize"
         app:layout_scrollFlags="scroll|enterAlways"
@@ -24,7 +26,10 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Message"
-            android:singleLine="true"
+            android:background="@drawable/roundedcorner"
+            android:padding="8dp"
+            android:textColorHint="#999999"
+            android:singleLine="false"
             android:textColor="@color/rsc_bottom_panel_accent"
             android:textSize="18dip"
             android:theme="@style/TelegramEditText"

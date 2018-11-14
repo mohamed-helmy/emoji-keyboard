@@ -83,9 +83,7 @@ public class TelegramPanel {
             @Override
             public boolean onMenuItemClick(MenuItem item) {
                 if (TelegramPanel.this.mListener != null) {
-                    if (item.getItemId() == R.id.action_attach) {
-                        TelegramPanel.this.mListener.onAttachClicked();
-                    } else if (item.getItemId() == R.id.action_mic) {
+                   if (item.getItemId() == R.id.action_mic) {
                         if (TelegramPanel.this.mInput.getText().toString().equals("")) {
                             TelegramPanel.this.mListener.onMicClicked();
                         } else {
@@ -146,25 +144,26 @@ public class TelegramPanel {
                 final MenuItem micButton = TelegramPanel.this.mBottomPanel.getMenu().findItem(R.id.action_mic);
                 if (!TelegramPanel.this.mInput.getText().toString().equals("") && TelegramPanel.this.mToogleIcon) {
                     TelegramPanel.this.mToogleIcon = Boolean.FALSE;
-                    TelegramPanel.this.mBottomPanel.findViewById(R.id.action_attach).animate().scaleX(0).scaleY(0).setDuration(150).start();
                     if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
                         TelegramPanel.this.mBottomPanel.findViewById(R.id.action_mic).animate().scaleX(0).scaleY(0).setDuration(75).withEndAction(new Runnable() {
                             @Override
                             public void run() {
-                                micButton.setIcon(R.drawable.ic_send_telegram);
+                                micButton.setIcon(R.drawable.ic_send_black_24dp);
                                 TelegramPanel.this.mBottomPanel.findViewById(R.id.action_mic).animate().scaleX(1).scaleY(1).setDuration(75).start();
+                                mListener.onTypingChange();
+
                             }
                         }).start();
                     }
                 } else if (TelegramPanel.this.mInput.getText().toString().equals("")) {
-                    TelegramPanel.this.mToogleIcon = Boolean.TRUE;
-                    TelegramPanel.this.mBottomPanel.findViewById(R.id.action_attach).animate().scaleX(1).scaleY(1).setDuration(150).start();
+                    TelegramPanel.this.mToogleIcon = true;
                     if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
                         TelegramPanel.this.mBottomPanel.findViewById(R.id.action_mic).animate().scaleX(0).scaleY(0).setDuration(75).withEndAction(new Runnable() {
                             @Override
                             public void run() {
-                                micButton.setIcon(R.drawable.ic_microphone_grey600_24dp);
+                                micButton.setIcon(R.drawable.ic_queue_music_black_24dp);
                                 TelegramPanel.this.mBottomPanel.findViewById(R.id.action_mic).animate().scaleX(1).scaleY(1).setDuration(75).start();
+                                mListener.onTypingStop();
                             }
                         }).start();
                     }
